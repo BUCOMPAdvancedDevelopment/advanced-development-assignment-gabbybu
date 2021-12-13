@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Development Assignment</title>
+    <link rel="stylesheet" href="/static/css/custom.css">
+ </head>
+<body>
+<!--Header-->
+{% set navigation_bar = [('/', 'home', 'Home'), ('/products', 'products', 'Products'), 
+('/contact', 'contact', 'Contact'), ('/register','register','Register')] -%}
+ {% set active_page = active_page|default('home') -%} 
+<header>
+    <img class="logo" src="/images/Logo.png" alt="logo">
+    <nav>
+        <ul class="nav_links">
+            {% for href, id, caption in navigation_bar %}
+            {% if id == active_page %}
+            <li class="active"><a href="{{ href|e }}">{{ caption|e }}<span class="sronly">(current)
+            </span></a></li>
+            {% else %}
+            <li><a href="{{ href|e }}">{{ caption|e }}</a></li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+    <a class="cta" href="#"><button>Register</button></a>
+</header>
+<!-- Content -->
+<main role="main" class="container">
+    <!-- Content -->
+    {% block content %}
+    {% endblock %}
+    </main><!-- /.container -->
+</div>
+</body>
+ </html>
