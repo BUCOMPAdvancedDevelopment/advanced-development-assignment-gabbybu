@@ -1,10 +1,19 @@
 import logging
-from flask import Flask, render_template,request
+import pymongo
+from pymongo import MongoClient
+from bson.json_util import dumps
+import os
+import requests
+import json
+from flask import Flask, render_template, request, jsonify,redirect
+
+
 app = Flask(__name__)
 @app.route('/')
 @app.route('/home')
 def home():
- return render_template('home.html')
+ user=get_user()
+ return render_template('home.html',data=user)
 @app.route('/products')
 def products():
  return render_template('products.html')
@@ -39,6 +48,24 @@ def server_error(e):
 @app.errorhandler(404)
 def page_not_found(error):
  return render_template('404.html'), 404
+
+def get_user():
+    try:
+        client = MongoClient("mongodb+srv://gabbybu:0602@assignment.u61bh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+
+        db=client.assignment
+
+        myCursor=db.test.find({})
+
+        list_cur=list(myCursor)
+        print(list_cur)
+
+        json_data=dumps(list_cur)
+
+        return json_data
+    except Exception as exc:
+        return str(exc)
+
 if __name__ == '__main__':
  # Only run for local development.
  app.run(host='127.0.0.1', port=8080, debug=True)
