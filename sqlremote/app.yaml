@@ -1,0 +1,7 @@
+runtime: python37
+
+env_variables:
+  CLOUD_SQL_USERNAME: gabby
+  CLOUD_SQL_PASSWORD: 4321
+  CLOUD_SQL_DATABASE_NAME: musiclist
+  CLOUD_SQL_CONNECTION_NAME: ad-assignment-335217:europe-west2:ad-assignment
