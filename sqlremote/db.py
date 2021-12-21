@@ -25,18 +25,18 @@ def open_connection():
 def get():
     conn = open_connection()
     with conn.cursor() as cursor:
-        result = cursor.execute('SELECT * FROM songs;')
-        songs = cursor.fetchall()
+        result = cursor.execute('SELECT * FROM users;')
+        users = cursor.fetchall()
         if result > 0:
-            got_songs = jsonify(songs)
+            got_users = jsonify(users)
         else:
-            got_songs = 'No Songs in DB'
-        return got_songs
+            got_users = 'No users in DB'
+        return got_users
 
-def create(song):
+def create(user):
     conn = open_connection()
     with conn.cursor() as cursor:
-        cursor.execute('INSERT INTO songs (title, artist, genre) VALUES(%s, %s, %s)',
-    (song["title"], song["artist"], song["genre"]))
+        cursor.execute('INSERT INTO users (id, name, email) VALUES(%s, %s, %s)',
+    (user["1"], user["john"], user["john@email.com"]))
     conn.commit()
     conn.close()

@@ -31,7 +31,7 @@ def main():
                               host=host, db=db_name)
 
     with cnx.cursor() as cursor:
-        cursor.execute('select demo_txt from demo_tbl;')
+        cursor.execute('select welcome_txt from welcome_tbl;')
         result = cursor.fetchall()
         current_msg = result[0][0]
     cnx.close()

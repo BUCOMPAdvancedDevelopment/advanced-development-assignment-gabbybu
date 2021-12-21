@@ -61,6 +61,16 @@ li, a, button{
     padding: 150px 8%;
     text-align: center;
 }
+.description-2{
+    color: #00181c;
+    background-color: rgba(8, 130, 150, 0.1);
+    padding: 150px 8%;
+    text-align: center;
+    height: 100vh;
+}
+.description-2 h3 a{
+    color: #00181c !important;
+}
 .description h1{
     padding-bottom: 30px;
 }

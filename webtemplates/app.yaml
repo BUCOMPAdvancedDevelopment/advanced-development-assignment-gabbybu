@@ -1,7 +1,21 @@
 runtime: python39
+
+# [START gae_python37_cloudsql_config]
+env_variables:
+  CLOUD_SQL_USERNAME: gabby
+  CLOUD_SQL_PASSWORD: 4321
+  CLOUD_SQL_DATABASE_NAME: welcome
+  CLOUD_SQL_CONNECTION_NAME: ad-assignment-335217:europe-west2:ad-assignment
+# [END gae_python37_cloudsql_config]
+
 handlers:
 - url: /images
   static_dir: images
 
+- url: /static
+  static_dir: static
+
 - url: /.*
-  script: app.my_app
+  script: auto
+  #script: app.my_app
+  
